@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>City Pincode Finder</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<h1>City Pincode Finder</h1>
+
+<!-- Tabs -->
+<div>
+    <button id="cityTabBtn">Find Pincode by City</button>
+    <button id="pincodeTabBtn">Find City by Pincode</button>
+</div>
+
+<!-- City Name Finder Tab -->
+<div id="cityTab">
+    <label for="city">Enter City Name:</label>
+    <input type="text" id="city" placeholder="Enter city name" list="cities" title="Select from the dropdown">
+    <datalist id="cities"></datalist>
+    <button id="searchCityBtn">Search</button>
+
+    <p id="cityResult"></p>
+</div>
+
+<!-- Pincode Finder Tab -->
+<div id="pincodeTab">
+    <label for="pincode">Enter Pincode:</label>
+    <input type="text" id="pincode" placeholder="Enter pincode" list="pincodes" title="Select from the dropdown">
+    <datalist id="pincodes"></datalist>
+    <button id="searchPincodeBtn">Search</button>
+
+    <p id="pincodeResult"></p>
+</div>
+
+<script src="index.js"></script>
+
+</body>
+</html>
