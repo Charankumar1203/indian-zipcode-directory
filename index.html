@@ -2,54 +2,39 @@
 <html>
 <head>
     <title>City Pincode Finder</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
 <h1>City Pincode Finder</h1>
 
-<label for="location">Enter City:</label>
-<input type="text" id="location" placeholder="Enter city name" list="cities">
-<datalist id="cities"></datalist>
-<button id="searchBtn">Search</button>
+<!-- Tabs -->
+<div>
+    <button id="cityTabBtn">Find Pincode by City</button>
+    <button id="pincodeTabBtn">Find City by Pincode</button>
+</div>
 
-<p id="result"></p>
+<!-- City Name Finder Tab -->
+<div id="cityTab">
+    <label for="city">Enter City Name:</label>
+    <input type="text" id="city" placeholder="Enter city name" list="cities" title="Select from the dropdown">
+    <datalist id="cities"></datalist>
+    <button id="searchCityBtn">Search</button>
 
-<script>
-document.getElementById("searchBtn").addEventListener("click", function() {
-    var location = document.getElementById("location").value;
-    fetch('assets/ALL_Pincodes_JSON.json')  // Change to your JSON file path
-        .then(response => response.json())
-        .then(data => {
-            var pincode = data["PostOffices"][location]["Pincode"];
-            var district = data["PostOffices"][location]["District"];
-            var statename = data["PostOffices"][location]["StateName"];
-            if (pincode) {
-                document.getElementById("result").textContent = "Pincode: " + pincode + " , District: " + district + " , State: " + statename;
-            } else {
-                document.getElementById("result").textContent = "City not found";
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching JSON:', error);
-        });
-});
+    <p id="cityResult"></p>
+</div>
 
-// Autocomplete suggestions
-fetch('assets/AllPostOffices.json')  // Change to your JSON file path
-    .then(response => response.json())
-    .then(data => {
-        var citiesList = data["offices"];
-        var datalist = document.getElementById('cities');
-        citiesList.forEach(city => {
-            var option = document.createElement('option');
-            option.value = city;
-            datalist.appendChild(option);
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching JSON:', error);
-    });
-</script>
+<!-- Pincode Finder Tab -->
+<div id="pincodeTab">
+    <label for="pincode">Enter Pincode:</label>
+    <input type="text" id="pincode" placeholder="Enter pincode" list="pincodes" title="Select from the dropdown">
+    <datalist id="pincodes"></datalist>
+    <button id="searchPincodeBtn">Search</button>
+
+    <p id="pincodeResult"></p>
+</div>
+
+<script src="index.js"></script>
 
 </body>
 </html>
